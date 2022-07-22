@@ -8,7 +8,7 @@ const formatTailwind = require("./src/formatters/tailwind");
 const formatFigma = require("./src/formatters/figma/index.js");
 const mergeFigmaFiles = require("./src/utils/mergeFigmaFiles.js");
 const trimHyphens = require("./src/utils/trimHyphens");
-const debug = process.argv[2] === '--debug';
+const debug = process.argv[2] === "--debug";
 
 /**
  * FILE SYSTEM
@@ -304,7 +304,7 @@ colorThemes.forEach((theme) => {
           {
             destination: `theme.${theme}.css`,
             format: "css/variables",
-            options: { theme: theme },
+            options: { theme: theme, selector: `.tw-${theme}` },
             filter: (token) => {
               return (
                 token.filePath.indexOf(theme) > -1 &&
